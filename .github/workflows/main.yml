@@ -1,15 +1,23 @@
-name: PR Test Workflow
+name: Print File Workflow
 
 on:
   pull_request:
-    branches: # Runs when a PR is created or updated for `dev or uat`
-      - dev 
-      - uat
+    branches:
+      - dev
+      - uat  # Runs on PR creation or update
+
+ # push:
+  #  branches:
+  #    - dev
+  #    - uat  # Runs when a PR is merged or direct push happens
 
 jobs:
-  test:
+  print_file:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say Hello
-        run: echo "Hello from GitHub Actions!"
+      - name: Checkout Repository
+        uses: actions/checkout@v4  # This is required to fetch your files
+
+      - name: Print hello.txt Contents
+        run: cat hello.txt
