@@ -1,7 +1,7 @@
 name: Print File Workflow
 
 on:
-  pull_request:
+  push:
     branches:
       - dev
       - uat  # Runs on PR creation or update
@@ -20,4 +20,5 @@ jobs:
         uses: actions/checkout@v4  # This is required to fetch your files
 
       - name: Print hello.txt Contents
+        run: ls
         run: cat hello.txt
