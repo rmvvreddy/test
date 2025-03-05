@@ -1,7 +1,7 @@
 name: Print File Workflow
 
 on:
-  pull_request:
+  push:
     branches:
       - dev
       - uat  # Runs on PR creation or update
