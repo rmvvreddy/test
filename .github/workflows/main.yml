@@ -1,15 +1,21 @@
-name: PR Test Workflow
+name: PR Closed Workflow
 
 on:
   pull_request:
-    branches: # Runs when a PR is created or updated for `dev or uat`
-      - dev 
+    branches:
+      - dev
       - uat
+    types:
+      - closed
 
 jobs:
-  test:
+  pr-closed:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say Hello
-        run: echo "Hello from GitHub Actions!"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run some tasks
+        run: |
+          echo "Pull request to dev branch has been closed!"
